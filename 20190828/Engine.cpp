@@ -11,6 +11,13 @@ Engine::Engine()
 
 Engine::~Engine()
 {
+	for (auto SelectActor : Actors)
+	{
+		delete SelectActor;
+		SelectActor = nullptr;
+	}
+
+	Actors.clear();
 }
 
 bool Engine::GetIsRuninng()
@@ -49,6 +56,11 @@ void Engine::AddActor(Actor * NewActor)
 void Engine::Input()
 {
 	int KeyCode = _getch();
+
+	if (KeyCode == 'q')
+	{
+		SetIsRuninng(false);
+	}
 }
 
 void Engine::Process()
